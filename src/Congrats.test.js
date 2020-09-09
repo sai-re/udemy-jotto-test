@@ -4,7 +4,6 @@ import Congrats from './Congrats';
 
 import {findByTestAttr, checkProps} from '../test/util';
 
-
 ///////
 const defaultProps = {success: false};
 
