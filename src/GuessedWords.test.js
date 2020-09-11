@@ -25,15 +25,17 @@ describe("if there are no words guessed", () => {
     //runs before each test
     beforeEach(() => {
         wrapper = setup({guessedWords: []})
-    })
+    });
 
     it('renders without errors', () => {
         const component = findByTestAttr(wrapper, "component-guessed-words");
+        //expect section to be rendered
         expect(component.length).toBe(1);
     });
 
     it('renders instructions', () => {
         const instructions = findByTestAttr(wrapper, "guess-instructions");
+        //checks if instruction element has text
         expect(instructions.text().length).not.toBe(0);
     });
 })
@@ -41,10 +43,13 @@ describe("if there are no words guessed", () => {
 describe("if there are words guessed", () => {
     let wrapper; //give wrapper to global scope of describe
 
+    //props for testing 
     const guessedWords = [
         {guessedWord: 'train', letterMatchCount: 3},
         {guessedWord: 'agile', letterMatchCount: 1},
-        {guessedWord: 'party', letterMatchCount: 5}
+        {guessedWord: 'party', letterMatchCount: 5},
+        {guessedWord: 'poop', letterMatchCount: 1},
+
     ];
 
     //runs before each test

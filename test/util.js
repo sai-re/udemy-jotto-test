@@ -1,5 +1,6 @@
 import checkPropTypes from 'check-prop-types';
 
+//finds element in wrapper using data-test attribute
 export const findByTestAttr = (wrapper, val) => {
     return wrapper.find(`[data-test="${val}"]`);
 }
