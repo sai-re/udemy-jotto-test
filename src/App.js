@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Congrats from './components/Congrats';
 import GuessedWords from './components/GuessedWords';
+import Input from './components/Input';
 
 import './App.css'
 
@@ -12,6 +13,8 @@ class App extends Component {
 
 				<Congrats success={false} />
 				
+				<Input />
+
 				<GuessedWords guessedWords={[
 					{guessedWord: 'train', letterMatchCount: 3},
 					{guessedWord: 'agile', letterMatchCount: 1},

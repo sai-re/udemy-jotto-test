@@ -1,4 +1,4 @@
-import { CORRECT_GUESS } from '../actions/index';
+import { CORRECT_GUESS } from '../constants/action-types';
 import successReducer from './successReducer';
 
 it('returns false when no action is passed', () => {
