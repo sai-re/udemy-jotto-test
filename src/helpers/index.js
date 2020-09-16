@@ -1,4 +1,4 @@
-const { func } = require("prop-types");
+// const { func } = require("prop-types");
 
 //function to return letters matched from guessed words
 export function getLetterMatchCount(guessedWord, secretWord) {
