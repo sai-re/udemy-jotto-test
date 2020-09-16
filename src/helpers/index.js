@@ -1,6 +1,10 @@
-// const { func } = require("prop-types");
-
-//function to return letters matched from guessed words
+/**
+ * returns redux thunk function that dispatches GUESS_WORD action
+* @function getLetterMatchCount
+* @param {string} guessedWord - Guessed word
+* @param {string} secretWord - Secret word
+* @returns {number} - number of letters matched
+*/
 export function getLetterMatchCount(guessedWord, secretWord) {
     //split both words into Sets to remove duplicate characters
     const secretLetterSet = new Set(secretWord.split(""));
