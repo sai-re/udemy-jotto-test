@@ -15,11 +15,7 @@ class App extends Component {
 				
 				<Input />
 
-				<GuessedWords guessedWords={[
-					{guessedWord: 'train', letterMatchCount: 3},
-					{guessedWord: 'agile', letterMatchCount: 1},
-					{guessedWord: 'party', letterMatchCount: 5}
-				]} />
+				<GuessedWords guessedWords={[]} />
 			</div>
 		);
 	}

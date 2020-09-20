@@ -4,14 +4,18 @@ import Input from '../Input';
 
 import { findByTestAttr, storeFactory } from '../../../test/util';
 
-///////
-//connected components needs to use store
+/**
+ * setup function to create shallow wrapper of input
+* @function setup
+* @param {object} initialState - Guessed word
+* @returns {shallowWrapper} - 
+*/
 const setup = (initialState={}) => {
     const store = storeFactory(initialState);
+    //passing in redux store as props, dive needed to access input 
     const wrapper = shallow(<Input store={store} />).dive().dive();
     return wrapper;
 };
-///////
 
 describe('render', () => {
     describe('word has not been guessed', () => {
@@ -63,7 +67,20 @@ describe('render', () => {
     });
 });
 
-describe('updating state', () => {
+describe('redux props', () => {
+    it("has success value as props", () => {
+        const success = true;
+        const wrapper = setup({ success });
+        //returns react componenent, props method to get access to props
+        const successProp = wrapper.instance().props.success;
+        expect(successProp).toBe(success);
+    });
 
+    it("guessWord action creator is a function prop", () => {
+        const wrapper = setup();
+        const guessWordProp = wrapper.instance().props.guessWord;
+        //check if guess Word Props is a function
+        expect(guessWordProp).toBeInstanceOf(Function);
+    });
 });
 
