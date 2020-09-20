@@ -7,25 +7,23 @@ import {findByTestAttr, checkProps} from '../../../test/util';
 ///////
 const defaultProps = {
     guessedWords: [{guessedWord: "train", letterMatchCount: 3}]
-}
+};
 
 const setup = (props={}) => {
-    const setUpProps = {...defaultProps, ...props}
+    const setUpProps = {...defaultProps, ...props};
     return shallow(<GuessedWords {...setUpProps} />);
-}
+};
 ///////
 
 it('props are correct type on congrats component', () => {
     checkProps(GuessedWords, defaultProps)
-})
+});
 
 describe("if there are no words guessed", () => {
     let wrapper; //give wrapper to global scope of describe
 
     //runs before each test
-    beforeEach(() => {
-        wrapper = setup({guessedWords: []})
-    });
+    beforeEach(() => wrapper = setup({guessedWords: []}));
 
     it('renders without errors', () => {
         const component = findByTestAttr(wrapper, "component-guessed-words");
@@ -38,7 +36,7 @@ describe("if there are no words guessed", () => {
         //checks if instruction element has text
         expect(instructions.text().length).not.toBe(0);
     });
-})
+});
 
 describe("if there are words guessed", () => {
     let wrapper; //give wrapper to global scope of describe
@@ -53,9 +51,7 @@ describe("if there are words guessed", () => {
     ];
 
     //runs before each test
-    beforeEach(() => {
-        wrapper = setup({guessedWords}) 
-    });
+    beforeEach(() => wrapper = setup({guessedWords}));
 
     it('renders without errors', () => {
         const component = findByTestAttr(wrapper, "component-guessed-words");
@@ -71,4 +67,4 @@ describe("if there are words guessed", () => {
         const guessedWordsItems = findByTestAttr(wrapper, "guessed-item");
         expect(guessedWordsItems.length).toBe(guessedWords.length);
     });
-})
+});

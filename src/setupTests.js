@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 
+//configure enzyme for all tests
 import Enzyme from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 

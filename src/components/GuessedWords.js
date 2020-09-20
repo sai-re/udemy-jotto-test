@@ -32,16 +32,16 @@ function GuessedWords(props) {
                         </tbody>
                     </table>
                 </div>
-            )
-        }
-    }
+            );
+        };
+    };
 
     return (
         <div data-test="component-guessed-words" className="GuessedWords">
             {printTable()}
         </div>
-    )
-}
+    );
+};
 
 //give types to our props
 GuessedWords.propTypes = {
@@ -51,6 +51,6 @@ GuessedWords.propTypes = {
             letterMatchCount: PropTypes.number.isRequired
         })
     ).isRequired
-}
+};
 
 export default GuessedWords;

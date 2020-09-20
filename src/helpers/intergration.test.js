@@ -9,9 +9,7 @@ describe('guessWord action dispatcher', () => {
         let store;
         const initialState = { secretWord };
 
-        beforeEach(() => {
-            store = storeFactory(initialState);
-        });
+        beforeEach(() => store = storeFactory(initialState));
 
         it("updates state correctly for unsuccessful guess", () => {
             //dispatch with incorrect word
@@ -29,9 +27,6 @@ describe('guessWord action dispatcher', () => {
                 ...initialState
             };
 
-            console.log("new", newState);
-            console.log("expected", expectedState);
-
             expect(newState).toEqual(expectedState);
         });
 
@@ -41,15 +36,12 @@ describe('guessWord action dispatcher', () => {
 
             const expectedState = {
                 success: true,
-                guessedWord: [{
+                guessedWords: [{
                     guessedWord: secretWord,
                     letterMatchCount: 5
                 }],
                 ...initialState
             };
-
-            console.log("new", newState);
-            console.log("expected", expectedState);
 
             expect(newState).toEqual(expectedState);
         });
@@ -65,11 +57,9 @@ describe('guessWord action dispatcher', () => {
         }];
 
         //create intial state with dummy guess
-        const initialState = { secretWord, guessedWords }
+        const initialState = { secretWord, guessedWords };
 
-        beforeEach(() => {
-            store = storeFactory(initialState);
-        });
+        beforeEach(() => store = storeFactory(initialState));
         
         it("updates state correctly for unsuccessful guess", () => {
             store.dispatch(guessWord(unsuccessfulGuess));
@@ -79,14 +69,11 @@ describe('guessWord action dispatcher', () => {
             const expectedState = {
                 secretWord,
                 success: false,
-                guessedWord: [
+                guessedWords: [
                     ...guessedWords, 
                     { guessedWord: unsuccessfulGuess, letterMatchCount: 3 }
                 ]
             };
-
-            console.log("new", newState);
-            console.log("expected", expectedState);
 
             expect(newState).toEqual(expectedState);
         });
@@ -99,14 +86,11 @@ describe('guessWord action dispatcher', () => {
             const expectedState = {
                 secretWord,
                 success: true,
-                guessedWord: [
+                guessedWords: [
                     ...guessedWords, 
                     { guessedWord: secretWord, letterMatchCount: 5 }
                 ]
             };
-
-            console.log("new", newState);
-            console.log("expected", expectedState);
 
             expect(newState).toEqual(expectedState);
         });

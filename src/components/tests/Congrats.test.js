@@ -9,9 +9,9 @@ const defaultProps = {success: false};
 //function to load render shallow component 
 const setup = (props={}) => {
     //if component has props, overwrite default props
-    const setUpProps = {...defaultProps, ...props}
+    const setUpProps = {...defaultProps, ...props};
     return shallow(<Congrats {...setUpProps} />);
-}
+};
 ///////
 
 it('renders without crashing', () => {
@@ -37,5 +37,5 @@ it('renders congrats message when success prop is true', () => {
 it('props are correct type on congrats component', () => {
     const expectedProps = { success: false };
     //checks if props type is correct
-    checkProps(Congrats, expectedProps)
-})
+    checkProps(Congrats, expectedProps);
+});

@@ -1,4 +1,4 @@
-import {getLetterMatchCount} from "./index"
+import {getLetterMatchCount} from "./index";
 
 describe('tests for getLetterMatchCount', () => {
     const secretWord = "party";
@@ -17,4 +17,4 @@ describe('tests for getLetterMatchCount', () => {
         const letterMatchCount = getLetterMatchCount("parka", secretWord);
         expect(letterMatchCount).toBe(3);
     });
-})
+});

@@ -1,5 +1,4 @@
 import { GUESS_WORD } from '../constants/action-types';
-
 /**
 * @function guessedWordsReducer
 * @param {array} state - array of guessed words.
@@ -12,5 +11,5 @@ export default function(state=[], action) {
             return [...state, action.payload];
         default:
             return state
-    }
-}
+    };
+};

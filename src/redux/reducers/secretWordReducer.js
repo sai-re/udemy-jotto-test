@@ -1,17 +1,16 @@
-// import { GUESS_WORD } from '../constants/action-types';
+import { SECRET_WORD } from '../constants/action-types';
 
 /**
 * @function secretWordReducer
-* @param {array} state - array of guessed words.
+* @param {string} state - state before reducer
 * @param {object} action - actions to be reduced.
-* @returns {array} - new guessedWords state
+* @returns {string} - new secret word from payload 
 */
 export default function(state=null, action) {
-    // switch(action.type) {
-    //     case GUESS_WORD:
-    //         return true;
-    //     default:
-    //         return state
-    // }
-    return state;
+    switch(action.type) {
+        case SECRET_WORD:
+            return action.payload;
+        default:
+            return state
+    }
 }
