@@ -3,22 +3,33 @@ import Congrats from './components/Congrats';
 import GuessedWords from './components/GuessedWords';
 import Input from './components/Input';
 
-import './App.css'
+import { connect } from 'react-redux';
+import { getSecretWord } from "../src/redux/actions/index";
+
+import './App.css';
 
 class App extends Component {
 	render() {
 		return (
-			<div className="container">
-				<h1>Jotto</h1>
+			<div data-test="component-app" className="container">
+				<div className="row">
+					<div className="col-sm">
+						<h1>Jotto</h1>
 
-				<Congrats success={false} />
-				
-				<Input />
+						<Congrats success={this.props.success} />
+						
+						<Input secretWord={this.props.secretWord} />
 
-				<GuessedWords guessedWords={[]} />
+						<GuessedWords guessedWords={this.props.guessedWords} />
+					</div>
+				</div>
 			</div>
 		);
 	}
 }
 
-export default App;
+const mapStateToProps = ({ success, secretWord, guessedWords }) => {
+    return { success, secretWord, guessedWords };
+};
+
+export default connect(mapStateToProps, { getSecretWord })(App);

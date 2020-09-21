@@ -5,7 +5,7 @@ import Input from '../Input';
 import { findByTestAttr, storeFactory } from '../../../test/util';
 
 /**
- * setup function to create shallow wrapper of input
+* setup function to create shallow wrapper of input
 * @function setup
 * @param {object} initialState - Guessed word
 * @returns {shallowWrapper} - 

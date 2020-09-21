@@ -3,7 +3,7 @@ import { getLetterMatchCount } from '../../helpers/index';
 import axios from 'axios';
 
 /**
- * returns redux thunk function that dispatches GUESS_WORD action
+* returns redux thunk function that dispatches GUESS_WORD action
 * @function guessWord
 * @param {string} guessedWord - Guessed word
 * @returns {function} - Thunk function
@@ -30,7 +30,7 @@ export function guessWord(guessedWord) {
 };
 
 /**
- * returns redux thunk function that returns a axios promise that dispatches SECRET_WORD action 
+* returns redux thunk function that returns a axios promise that dispatches SECRET_WORD action 
 * @function getSecretWord
 * @returns {function} - Thunk function
 */
