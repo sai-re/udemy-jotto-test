@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
+import ConnectedApp, { App } from './App';
 
 import { storeFactory, findByTestAttr } from '../test/util';
 
@@ -12,7 +12,7 @@ import { storeFactory, findByTestAttr } from '../test/util';
 */
 const setup = (initialState={}) => {
     const store = storeFactory(initialState);
-    const wrapper = shallow(<App store={store} />).dive().dive();
+    const wrapper = shallow(<ConnectedApp store={store} />).dive().dive();
     return wrapper;
 };
 
@@ -51,5 +51,26 @@ describe("redux props", () => {
         const getSecretWordProp = wrapper.instance().props.getSecretWord;
         //check if guess Word Props is a function
         expect(getSecretWordProp).toBeInstanceOf(Function);
+    });
+
+    it("getSecretWord runs on app mount", () => {
+        //jest will watch mock function to see when called and how
+        const getSecretWordMock = jest.fn();
+
+        //props to give to shallow
+        const props = {
+            getSecretWord: getSecretWordMock,
+            success: false,
+            guessedWords: []
+        };
+
+        //create unconnected shallow and pass prop directly
+        const wrapper = shallow(<App {...props} />);
+
+        //run lifecycle method of actual component
+        wrapper.instance().componentDidMount();
+
+        const callCount = getSecretWordMock.mock.calls.length;
+        expect(callCount).toBe(1);
     });
 });

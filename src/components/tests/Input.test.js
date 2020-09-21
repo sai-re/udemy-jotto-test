@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Input from '../Input';
+import ConnectedInput, { Input } from '../Input';
 
 import { findByTestAttr, storeFactory } from '../../../test/util';
 
@@ -13,7 +13,7 @@ import { findByTestAttr, storeFactory } from '../../../test/util';
 const setup = (initialState={}) => {
     const store = storeFactory(initialState);
     //passing in redux store as props, dive needed to access input 
-    const wrapper = shallow(<Input store={store} />).dive().dive();
+    const wrapper = shallow(<ConnectedInput store={store} />).dive().dive();
     return wrapper;
 };
 
@@ -84,3 +84,28 @@ describe('redux props', () => {
     });
 });
 
+describe('guessWord action creator', () => {
+    let mockFunction;
+    let wrapper;
+    const testGuess = "train";
+
+    beforeEach(() => {
+        mockFunction = jest.fn();
+        wrapper = shallow(<Input guessWord={mockFunction} />);
+
+        wrapper.setState({ guess: testGuess });
+
+        const submitBtn = findByTestAttr(wrapper, "submit-button");
+        submitBtn.simulate("click", { preventDefault(){} });
+    });
+
+    it("test if guessWord action creator called on submit", () => {
+        const callCount = mockFunction.mock.calls.length;
+        expect(callCount).toBe(1);
+    });
+
+    it("call guessWord with input val as argument", () => {
+        const mockArguments = mockFunction.mock.calls[0][0];
+        expect(mockArguments).toBe(testGuess);
+    });
+});

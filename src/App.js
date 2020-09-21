@@ -8,7 +8,12 @@ import { getSecretWord } from "../src/redux/actions/index";
 
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
+
+	componentDidMount() {
+		this.props.getSecretWord();
+	};
+
 	render() {
 		return (
 			<div data-test="component-app" className="container">
@@ -25,8 +30,8 @@ class App extends Component {
 				</div>
 			</div>
 		);
-	}
-}
+	};
+};
 
 const mapStateToProps = ({ success, secretWord, guessedWords }) => {
     return { success, secretWord, guessedWords };
