@@ -5,7 +5,9 @@
 * @param {string} secretWord - Secret word
 * @returns {number} - number of letters matched
 */
-export function getLetterMatchCount(guessedWord, secretWord) {
+export function getLetterMatchCount(guessedWord, secretWordArr) {
+    const secretWord = secretWordArr[0];
+    
     //split both words into Sets to remove duplicate characters
     const secretLetterSet = new Set(secretWord.split(""));
     const guessedLetterSet = new Set(guessedWord.split(""));

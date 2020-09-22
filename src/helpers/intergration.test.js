@@ -2,8 +2,8 @@ import { storeFactory } from '../../test/util';
 import { guessWord } from '../redux/actions/index';
 
 describe('guessWord action dispatcher', () => {
-    const secretWord = "party";
     const unsuccessfulGuess = "train";
+    const secretWord = ["party"];
 
     describe("no guessed words", () => {
         let store;
@@ -16,7 +16,7 @@ describe('guessWord action dispatcher', () => {
             store.dispatch(guessWord(unsuccessfulGuess));
             //get new state from store
             const newState = store.getState();
-
+            
             //expected state after dispatching incorrect guess
             const expectedState = {
                 success: false,
@@ -31,13 +31,13 @@ describe('guessWord action dispatcher', () => {
         });
 
         it("updates state correctly for successful guess", () => {
-            store.dispatch(guessWord(secretWord));
+            store.dispatch(guessWord("party"));
             const newState = store.getState();
 
             const expectedState = {
                 success: true,
                 guessedWords: [{
-                    guessedWord: secretWord,
+                    guessedWord: "party",
                     letterMatchCount: 5
                 }],
                 ...initialState
@@ -79,7 +79,7 @@ describe('guessWord action dispatcher', () => {
         });
 
         it("updates state correctly for successful guess", () => {
-            store.dispatch(guessWord(secretWord));
+            store.dispatch(guessWord("party"));
             const newState = store.getState();
 
             //create expected state with unsuccessful guess added to dummy guess
@@ -88,7 +88,7 @@ describe('guessWord action dispatcher', () => {
                 success: true,
                 guessedWords: [
                     ...guessedWords, 
-                    { guessedWord: secretWord, letterMatchCount: 5 }
+                    { guessedWord: "party", letterMatchCount: 5 }
                 ]
             };
 

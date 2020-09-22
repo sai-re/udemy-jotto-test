@@ -20,10 +20,11 @@ export class App extends Component {
 				<div className="row">
 					<div className="col-sm">
 						<h1>Jotto</h1>
-
+						<p>secret word is {this.props.secretWord}</p>
+						
 						<Congrats success={this.props.success} />
 						
-						<Input secretWord={this.props.secretWord} />
+						<Input />
 
 						<GuessedWords guessedWords={this.props.guessedWords} />
 					</div>

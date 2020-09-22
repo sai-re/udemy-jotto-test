@@ -108,4 +108,8 @@ describe('guessWord action creator', () => {
         const mockArguments = mockFunction.mock.calls[0][0];
         expect(mockArguments).toBe(testGuess);
     });
+
+    it("input box clears on submit", () => {
+        expect(wrapper.state("guess")).toBe("");
+    });
 });

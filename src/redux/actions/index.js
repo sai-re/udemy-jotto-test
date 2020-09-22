@@ -12,6 +12,7 @@ export function guessWord(guessedWord) {
     return (dispatch, getState) => {
         //get secret word from state object
         const secretWord = getState().secretWord;
+
         const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
 
         //dispatch to reducer, which will add guessed word to redux state
@@ -21,7 +22,7 @@ export function guessWord(guessedWord) {
         });
 
         //turn success state to true if guessed word is correct
-        if (guessedWord === secretWord) {
+        if (guessedWord === secretWord[0]) {
             dispatch({
                 type: CORRECT_GUESS
             });

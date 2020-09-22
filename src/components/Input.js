@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { guessWord } from "../redux/actions/index";
 
 export class Input extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super();
 
         this.state = {
             guess: ""
-        }
+        };
 
         this.handleClick = this.handleClick.bind(this);
     }
@@ -17,8 +17,12 @@ export class Input extends Component {
     handleClick(e) {
         e.preventDefault();
 
-        if (this.state.guess && this.state.guess > 0)
-        this.props.guessWord(this.state.guess);
+        const guess = this.state.guess;
+        
+        if (guess && guess.length > 0) {
+            this.props.guessWord(guess);
+            this.setState({guess: ""});
+        }
     }
 
     render() {
@@ -32,14 +36,14 @@ export class Input extends Component {
                     className="mb-2 mx-sm-3" 
                     placeholder="Enter Guess"
                     onChange={(e) => this.setState({guess: e.target.value})}
-                    value={this.state.guess} 
+                    value={this.state.guess}
                 />
                 
                 <button 
                     data-test="submit-button" 
                     type="submit" 
                     className="btn btn-primary mb-2"
-                    onClick={this.handleClick}>
+                    onClick={(e) => this.handleClick(e)}>
                     Submit
                 </button>
             </form>
