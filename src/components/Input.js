@@ -12,7 +12,7 @@ export class Input extends Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
-    }
+    };
 
     handleClick(e) {
         e.preventDefault();
@@ -22,11 +22,10 @@ export class Input extends Component {
         if (guess && guess.length > 0) {
             this.props.guessWord(guess);
             this.setState({guess: ""});
-        }
-    }
+        };
+    };
 
     render() {
-        
         const content = (this.props.success)
         ? null
         : (

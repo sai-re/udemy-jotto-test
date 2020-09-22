@@ -90,21 +90,26 @@ describe('guessWord action creator', () => {
     const testGuess = "train";
 
     beforeEach(() => {
+        //create mock function
         mockFunction = jest.fn();
+        //pass function as prop to input
         wrapper = shallow(<Input guessWord={mockFunction} />);
-
+        //set state of input to test guess
         wrapper.setState({ guess: testGuess });
 
         const submitBtn = findByTestAttr(wrapper, "submit-button");
+        //simulate click of submit button which would call the mock function 
         submitBtn.simulate("click", { preventDefault(){} });
     });
 
     it("test if guessWord action creator called on submit", () => {
+        //check how many times mock was called
         const callCount = mockFunction.mock.calls.length;
         expect(callCount).toBe(1);
     });
 
     it("call guessWord with input val as argument", () => {
+        // as calls is an array, get the input text from calls
         const mockArguments = mockFunction.mock.calls[0][0];
         expect(mockArguments).toBe(testGuess);
     });

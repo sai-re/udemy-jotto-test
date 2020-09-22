@@ -14,6 +14,7 @@ function GuessedWords(props) {
                     <td>{word.letterMatchCount}</td>
                 </tr>
             ));
+            
             //return table component if props has guessed words
             return (
                 <div data-test="guessed-words">
