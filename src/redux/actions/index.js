@@ -1,4 +1,4 @@
-import { CORRECT_GUESS, GUESS_WORD, SECRET_WORD } from '../constants/action-types';
+import { CORRECT_GUESS, GUESS_WORD, SECRET_WORD, RESET_STATE } from '../constants/action-types';
 import { getLetterMatchCount } from '../../helpers/index';
 import axios from 'axios';
 
@@ -44,5 +44,16 @@ export function getSecretWord() {
                 payload: response.data
             });
         });
+    };
+};
+
+/**
+* returns action to reset state
+* @function resetState
+* @returns {object} - returns action
+*/
+export function resetState() { 
+    return {
+        type: RESET_STATE
     };
 };

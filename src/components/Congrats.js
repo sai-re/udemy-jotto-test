@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import NewWord from './NewWord';
 
 function Congrats(props) {
     const printCongrats = () => {
@@ -12,12 +13,14 @@ function Congrats(props) {
                     <span data-test="congrats-message">Congratulations! you guessed correct word</span> 
                 </div>
             );
-        }
+        };
     };
     
     return (
         <div data-test="component-congrats">
             {printCongrats()}
+
+            {(props.success) ? <NewWord /> : null}
         </div>
     );
 };
@@ -25,6 +28,6 @@ function Congrats(props) {
 //give types to our props
 Congrats.propTypes = {
     success: PropTypes.bool.isRequired
-}
+};
 
 export default Congrats;

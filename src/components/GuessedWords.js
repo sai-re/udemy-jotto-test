@@ -10,6 +10,7 @@ function GuessedWords(props) {
             //map over guessed words and print table with word and letter match count
             const guessedWordsRow = props.guessedWords.map((word, index) => (
                 <tr data-test="guessed-item" key={index}>
+                    <td>{index + 1}</td>
                     <td>{word.guessedWord}</td>
                     <td>{word.letterMatchCount}</td>
                 </tr>
@@ -23,6 +24,7 @@ function GuessedWords(props) {
                     <table className="table table-sm">
                         <thead className="thead-light">
                             <tr>
+                                <th>#</th>
                                 <th>Guess</th>
                                 <th>Matching Letters</th>
                             </tr>
@@ -32,6 +34,8 @@ function GuessedWords(props) {
                             {guessedWordsRow}
                         </tbody>
                     </table>
+
+                    <strong><p>Total Guesses: {props.guessedWords.length}</p></strong>
                 </div>
             );
         };
