@@ -25,39 +25,43 @@ export class Input extends Component {
         };
     };
 
-    render() {
-        const content = (this.props.success)
-        ? null
-        : (
-            <form className="form-inline">
-                <input 
-                    data-test="input-box" 
-                    className="mb-2 mx-sm-3" 
-                    placeholder="Enter Guess"
-                    onChange={(e) => this.setState({guess: e.target.value})}
-                    value={this.state.guess}
-                />
-                
-                <button 
-                    data-test="submit-button" 
-                    type="submit" 
-                    className="btn btn-primary mb-2"
-                    onClick={(e) => this.handleClick(e)}>
-                    Submit
-                </button>
-            </form>
-        );
+    showForm = () => {
+        if (!this.props.success || !this.props.giveUp ) {
+            return (
+                <form className="form-inline">
+                    <input 
+                        data-test="input-box" 
+                        className="mb-2 mx-sm-3" 
+                        placeholder="Enter Guess"
+                        onChange={(e) => this.setState({guess: e.target.value})}
+                        value={this.state.guess}
+                    />
+                    
+                    <button 
+                        data-test="submit-button" 
+                        type="submit" 
+                        className="btn btn-primary mb-2"
+                        onClick={(e) => this.handleClick(e)}>
+                        Submit
+                    </button>
+                </form>
+            );
+        } else {
+            return null;
+        };
+    };
 
+    render() {
         return (
             <div data-test="component-input">
-                {content}
+                {this.showForm()}
             </div>
         );
     };
 };
 
-const mapStateToProps = ({ success }) => {
-    return { success }
+const mapStateToProps = ({ success, giveUp }) => {
+    return { success, giveUp }
 };
 
 export default connect(mapStateToProps, { guessWord })(Input);

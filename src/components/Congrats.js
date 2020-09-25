@@ -1,33 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NewWord from './NewWord';
 
-function Congrats(props) {
-    const printCongrats = () => {
-        //conditionally assign class name
-        const successAlert = props.success ? "alert-success" : "";
-
-        if (props.success) {    
-            return (
-                <div className={`alert ${successAlert} Congrats`}>
-                    <span data-test="congrats-message">Congratulations! you guessed correct word</span> 
-                </div>
-            );
-        };
-    };
-    
+function Congrats() {    
     return (
         <div data-test="component-congrats">
-            {printCongrats()}
+            <div className="holder">
+                <div className={`alert alert-success Congrats`}>
+                    <span data-test="congrats-message">Congratulations! you guessed correct word</span> 
+                </div>
 
-            {(props.success) ? <NewWord /> : null}
+                <NewWord /> 
+            </div>
         </div>
     );
-};
-
-//give types to our props
-Congrats.propTypes = {
-    success: PropTypes.bool.isRequired
 };
 
 export default Congrats;

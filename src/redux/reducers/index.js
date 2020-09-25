@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import success from './successReducer';
 import guessedWords from './guessedWordReducer';
 import secretWord from './secretWordReducer';
+import giveUp from './giveUpReducer';
 
 const appReducer = combineReducers ({
     success,
     guessedWords,
-    secretWord
+    secretWord,
+    giveUp
 });
 
 const rootReducer = (state, action) => {
