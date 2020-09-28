@@ -4,6 +4,9 @@ import ConnectedApp, { App } from './App';
 
 import { storeFactory, findByTestAttr } from '../test/util';
 
+import Congrats from './components/Congrats';
+import GiveUpMsg from './components/GiveUpMsg';
+
 /**
 * setup function to create shallow wrapper of input
 * @function setup
@@ -74,3 +77,49 @@ describe("redux props", () => {
         expect(callCount).toBe(1);
     });
 });
+
+///////
+const defaultProps = {
+    guessedWords: [{
+        guessedWord: "train",
+        letterMatchCount: 3
+    }]
+};
+
+//function to load render shallow component 
+const unconnectedApp = (props={}) => {
+    //if component has props, overwrite default props
+    const setUpProps = {...defaultProps, ...props};
+    return shallow(<App {...setUpProps} />);
+};
+///////
+
+describe("congrats and failed messages", () => {
+    it('renders no congrats message when success prop is false', () => {
+        const props = { success: false };
+
+        const wrapper = unconnectedApp({...props});
+
+        //expect element to be empty as props if false
+        expect(wrapper.containsMatchingElement(<Congrats />)).toEqual(false);
+    });
+
+    it('renders congrats message when success prop is true', () => {
+        const props = { success: true };
+
+        const wrapper = unconnectedApp({...props});
+
+        //expect element to be empty as props if false
+        expect(wrapper.containsMatchingElement(<Congrats />)).toEqual(true);
+    });
+
+    it('renders message when success prop is true', () => {
+        const props = { giveUp: true };
+
+        const wrapper = unconnectedApp({...props});
+
+        //expect element to be empty as props if false
+        expect(wrapper.containsMatchingElement(<GiveUpMsg />)).toEqual(true);
+    });
+});
+

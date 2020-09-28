@@ -20,7 +20,7 @@ export class App extends Component {
 			return <GiveUpBtn giveUp={this.props.giveUp} /> 
 		} else {
 			return "";
-		}
+		};
 	};
 
 	printMsg = () => {

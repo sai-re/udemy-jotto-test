@@ -19,6 +19,7 @@ describe('guessWord action dispatcher', () => {
             
             //expected state after dispatching incorrect guess
             const expectedState = {
+                giveUp: false,
                 success: false,
                 guessedWords: [{
                     guessedWord: unsuccessfulGuess,
@@ -35,6 +36,7 @@ describe('guessWord action dispatcher', () => {
             const newState = store.getState();
 
             const expectedState = {
+                giveUp: false,
                 success: true,
                 guessedWords: [{
                     guessedWord: "party",
@@ -67,6 +69,7 @@ describe('guessWord action dispatcher', () => {
 
             //create expected state with unsuccessful guess added to dummy guess
             const expectedState = {
+                giveUp: false,
                 secretWord,
                 success: false,
                 guessedWords: [
@@ -84,6 +87,7 @@ describe('guessWord action dispatcher', () => {
 
             //create expected state with unsuccessful guess added to dummy guess
             const expectedState = {
+                giveUp: false,
                 secretWord,
                 success: true,
                 guessedWords: [

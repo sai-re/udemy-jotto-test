@@ -11,6 +11,6 @@ export default function(state=null, action) {
         case SECRET_WORD:
             return action.payload;
         default:
-            return state
-    }
-}
+            return state;
+    };
+};

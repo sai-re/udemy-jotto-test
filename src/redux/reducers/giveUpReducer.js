@@ -11,6 +11,6 @@ export default function(state=false, action) {
         case GIVE_UP:
             return true;
         default:
-            return state
+            return state;
     };
 };

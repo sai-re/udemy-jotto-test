@@ -26,7 +26,9 @@ export class Input extends Component {
     };
 
     showForm = () => {
-        if (!this.props.success || !this.props.giveUp ) {
+        if (this.props.success || this.props.giveUp ) {
+            return null;
+        } else {
             return (
                 <form className="form-inline">
                     <input 
@@ -46,8 +48,6 @@ export class Input extends Component {
                     </button>
                 </form>
             );
-        } else {
-            return null;
         };
     };
 
