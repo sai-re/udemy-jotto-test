@@ -6,17 +6,17 @@ import { givenUp } from "../redux/actions/index";
 export class GiveUpBtn extends Component {
     constructor() {
         super();
-
         this.handleClick = this.handleClick.bind(this);
     };
 
     handleClick = () => this.props.givenUp();
 
+    //render btn if user has not given up
     showBtn = () => {
         if(this.props.giveUp) {
-            return null
+            return null;
         } else {
-            return <button className="btn btn-danger mb-2" onClick={this.handleClick}>Give Up?</button>;
+            return <button data-test="give-up-button" className="btn btn-danger mb-2" onClick={this.handleClick}>Give Up?</button>;
         };
     };
 

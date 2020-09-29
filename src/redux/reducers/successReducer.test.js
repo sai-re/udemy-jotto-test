@@ -7,6 +7,6 @@ it('returns false when no action is passed', () => {
 });
 
 it('returns true when action of type CORRECT_GUESS is passed', () => {
-    const newState = successReducer(undefined, { type:CORRECT_GUESS });
+    const newState = successReducer(undefined, { type: CORRECT_GUESS });
     expect(newState).toBe(true);
 });

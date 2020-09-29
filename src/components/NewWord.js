@@ -6,11 +6,11 @@ import { getSecretWord, resetState } from "../redux/actions/index";
 export class NewWord extends Component {
     constructor() {
         super();
-
         this.handleClick = this.handleClick.bind(this);
     };
 
     handleClick = () => {
+        //reset redux state and request new word if user wants to play again
         this.props.resetState();
         this.props.getSecretWord();
     };
@@ -24,4 +24,4 @@ export class NewWord extends Component {
     };
 };
 
-export default connect(null, { getSecretWord, resetState})(NewWord);
+export default connect(null, { getSecretWord, resetState })(NewWord);

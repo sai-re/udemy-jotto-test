@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Congrats from './components/Congrats';
 import GuessedWords from './components/GuessedWords';
 import Input from './components/Input';
@@ -15,6 +15,7 @@ export class App extends Component {
 		this.props.getSecretWord();
 	};
 
+	//show give up button if a unsuccessful guess has been made
 	showGiveUpBtn = () => {
 		if (this.props.guessedWords.length > 0 && !this.props.success) {
 			return <GiveUpBtn giveUp={this.props.giveUp} /> 
@@ -23,6 +24,7 @@ export class App extends Component {
 		};
 	};
 
+	//print congrats if guess is correct otherwise check if user has given up
 	printMsg = () => {
 		if (this.props.success) {
 			return <Congrats />

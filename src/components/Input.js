@@ -6,11 +6,7 @@ import { guessWord } from "../redux/actions/index";
 export class Input extends Component {
     constructor() {
         super();
-
-        this.state = {
-            guess: ""
-        };
-
+        this.state = { guess: "" };
         this.handleClick = this.handleClick.bind(this);
     };
 
@@ -18,7 +14,8 @@ export class Input extends Component {
         e.preventDefault();
 
         const guess = this.state.guess;
-        
+
+        //if guess is not blank and true dispatch guess then reset
         if (guess && guess.length > 0) {
             this.props.guessWord(guess);
             this.setState({guess: ""});
@@ -26,6 +23,7 @@ export class Input extends Component {
     };
 
     showForm = () => {
+        //show form if user has not given up or won
         if (this.props.success || this.props.giveUp ) {
             return null;
         } else {

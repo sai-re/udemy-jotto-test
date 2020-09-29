@@ -7,8 +7,8 @@ import { findByTestAttr, storeFactory } from '../../../test/util';
 /**
 * setup function to create shallow wrapper of input
 * @function setup
-* @param {object} initialState - Guessed word
-* @returns {shallowWrapper} - 
+* @param {object} initialState - empty object
+* @returns {shallowWrapper} - dived wrapper to get actual component from HOC
 */
 const setup = (initialState={}) => {
     const store = storeFactory(initialState);
@@ -22,7 +22,7 @@ describe('render', () => {
         let wrapper;
 
         beforeEach(() => {
-            const initialState = { success: false};
+            const initialState = { success: false };
             wrapper = setup(initialState);
         });
 
@@ -46,7 +46,7 @@ describe('render', () => {
         let wrapper;
 
         beforeEach(() => {
-            const initialState = { success: true};
+            const initialState = { success: true };
             wrapper = setup(initialState);
         });
 
@@ -99,7 +99,7 @@ describe('guessWord action creator', () => {
 
         const submitBtn = findByTestAttr(wrapper, "submit-button");
         //simulate click of submit button which would call the mock function 
-        submitBtn.simulate("click", { preventDefault(){} });
+        submitBtn.simulate("click", { preventDefault() {} });
     });
 
     it("test if guessWord action creator called on submit", () => {

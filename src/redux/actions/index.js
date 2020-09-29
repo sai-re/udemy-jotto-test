@@ -1,4 +1,11 @@
-import { CORRECT_GUESS, GUESS_WORD, SECRET_WORD, RESET_STATE, GIVE_UP } from '../constants/action-types';
+import { 
+    CORRECT_GUESS, 
+    GUESS_WORD, 
+    SECRET_WORD, 
+    RESET_STATE, 
+    GIVE_UP 
+} from '../constants/action-types';
+
 import { getLetterMatchCount } from '../../helpers/index';
 import axios from 'axios';
 

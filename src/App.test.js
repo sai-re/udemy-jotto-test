@@ -26,6 +26,7 @@ it('renders main app', () => {
 });
 
 describe("redux props", () => {
+    //passes prop to shallow component, get props of shallow and match against initial prop value
     it("has success value as prop", () => {
         const success = true;
         const wrapper = setup({ success });
@@ -40,6 +41,14 @@ describe("redux props", () => {
         //returns react componenent, props method to get access to props
         const secretWordProp = wrapper.instance().props.secretWord;
         expect(secretWordProp).toBe(secretWord);
+    });
+
+    it("has giveUp value as prop", () => {
+        const giveUp = true;
+        const wrapper = setup({ giveUp });
+        //returns react componenent, props method to get access to props
+        const giveUpProp = wrapper.instance().props.giveUp;
+        expect(giveUpProp).toBe(giveUp);
     });
 
     it("has guessedWords array as prop", () => {
@@ -78,23 +87,21 @@ describe("redux props", () => {
     });
 });
 
-///////
-const defaultProps = {
-    guessedWords: [{
-        guessedWord: "train",
-        letterMatchCount: 3
-    }]
-};
-
-//function to load render shallow component 
-const unconnectedApp = (props={}) => {
-    //if component has props, overwrite default props
-    const setUpProps = {...defaultProps, ...props};
-    return shallow(<App {...setUpProps} />);
-};
-///////
-
 describe("congrats and failed messages", () => {
+    const defaultProps = {
+        guessedWords: [{
+            guessedWord: "train",
+            letterMatchCount: 3
+        }]
+    };
+
+    //function to load render shallow component 
+    const unconnectedApp = (props={}) => {
+        //if component has props, overwrite default props
+        const setUpProps = {...defaultProps, ...props};
+        return shallow(<App {...setUpProps} />);
+    };
+
     it('renders no congrats message when success prop is false', () => {
         const props = { success: false };
 
@@ -113,7 +120,7 @@ describe("congrats and failed messages", () => {
         expect(wrapper.containsMatchingElement(<Congrats />)).toEqual(true);
     });
 
-    it('renders message when success prop is true', () => {
+    it('renders message when giveUp prop is true', () => {
         const props = { giveUp: true };
 
         const wrapper = unconnectedApp({...props});

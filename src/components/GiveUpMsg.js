@@ -12,7 +12,7 @@ function GiveUpMsg(props) {
                     </span> 
                 </div>
 
-                <NewWord /> 
+                <NewWord />
             </div>
         </div>
     );
