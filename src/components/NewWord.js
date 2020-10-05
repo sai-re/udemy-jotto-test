@@ -18,7 +18,12 @@ export class NewWord extends Component {
     render() {
         return (
             <div data-test="component-new-word">
-                <button className="btn btn-secondary mb-2" onClick={this.handleClick}>Play Again?</button>
+                <button 
+                    className="btn btn-secondary mb-2" 
+                    onClick={this.handleClick}
+                    data-test="new-word-button">
+                    Play Again?
+                </button>
             </div>
         );
     };

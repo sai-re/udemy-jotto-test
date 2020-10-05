@@ -4,7 +4,7 @@ import NewWord from './NewWord';
 
 function GiveUpMsg(props) {    
     return (
-        <div data-test="component-congrats">
+        <div data-test="component-give-up-message">
             <div className="holder">
                 <div className={`alert alert-danger`}>
                     <span data-test="give-up-message">
