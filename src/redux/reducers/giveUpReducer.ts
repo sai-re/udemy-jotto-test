@@ -1,4 +1,5 @@
 import { GIVE_UP } from '../constants/action-types';
+import { appActionTypes } from '../../types/actions';
 
 /**
 * @function giveUpReducer 
@@ -6,7 +7,10 @@ import { GIVE_UP } from '../constants/action-types';
 * @param {object} action - actions to be reduced.
 * @returns {boolean} - new state
 */
-export default function(state=false, action) {
+
+const initialState: boolean = false;
+
+export default function(state=initialState, action: appActionTypes): boolean {
     switch(action.type) {
         case GIVE_UP:
             return true;

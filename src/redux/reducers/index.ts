@@ -5,6 +5,9 @@ import guessedWords from './guessedWordReducer';
 import secretWord from './secretWordReducer';
 import giveUp from './giveUpReducer';
 
+import { appActionTypes } from '../../types/actions';
+import { AppState } from '../../types/state';
+
 //combine all reducers
 const appReducer = combineReducers ({
     success,
@@ -14,7 +17,7 @@ const appReducer = combineReducers ({
 });
 
 //global reducer for operation relating to whole state
-const rootReducer = (state, action) => {
+const rootReducer = (state: AppState | undefined, action: appActionTypes) => {
     if (action.type === RESET_STATE) {
         state = undefined;
     };

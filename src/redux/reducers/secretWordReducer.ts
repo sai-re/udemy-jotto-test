@@ -1,4 +1,5 @@
 import { SECRET_WORD } from '../constants/action-types';
+import { appActionTypes } from '../../types/actions';
 
 /**
 * @function secretWordReducer
@@ -6,7 +7,10 @@ import { SECRET_WORD } from '../constants/action-types';
 * @param {object} action - actions to be reduced.
 * @returns {string} - new secret word from payload 
 */
-export default function(state=null, action) {
+
+const initialState: string = "";
+
+export default function(state=initialState, action: appActionTypes): string {
     switch(action.type) {
         case SECRET_WORD:
             return action.payload;
