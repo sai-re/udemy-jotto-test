@@ -8,9 +8,17 @@ import GiveUpMsg from './components/GiveUpMsg';
 import { connect } from 'react-redux';
 import { getSecretWord } from "../src/redux/actions/index";
 
+import { AppState } from './types/state';
+
 import './App.css';
 
-export class App extends Component {
+type DispatchProp = {
+	getSecretWord: () => void
+};
+
+type Props = DispatchProp & AppState;
+
+export class App extends Component<Props> {
 	componentDidMount() {
 		this.props.getSecretWord();
 	};
@@ -30,6 +38,8 @@ export class App extends Component {
 			return <Congrats />
 		} else if (this.props.giveUp) {
 			return <GiveUpMsg secretWord={this.props.secretWord}/>
+		} else {
+			return;
 		};
 	};
 
@@ -56,8 +66,11 @@ export class App extends Component {
 	};
 };
 
-const mapStateToProps = ({ success, secretWord, guessedWords, giveUp }) => {
-    return { success, secretWord, guessedWords, giveUp };
-};
+const mapStateToProps = (state: AppState): AppState => ({
+	success: state.success, 
+	secretWord: state.secretWord,
+	guessedWords: state.guessedWords,
+	giveUp: state.giveUp
+});
 
 export default connect(mapStateToProps, { getSecretWord })(App);

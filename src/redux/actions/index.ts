@@ -12,7 +12,7 @@ import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 
 import { getLetterMatchCount } from '../../helpers/index';
-import axios from 'axios';
+// import axios from 'axios';
 
 /**
 * returns redux thunk function that dispatches GUESS_WORD action
@@ -22,7 +22,7 @@ import axios from 'axios';
 */
 export const guessWord = (guessedWord: string): ThunkAction<void, RootState, null, Action<string>> => (dispatch, getState) => {
     //get secret word from state object
-    console.log(getState());
+    
     const secretWord = getState().secretWord;
 
     const letterMatchCount = getLetterMatchCount(guessedWord, secretWord);
@@ -35,8 +35,8 @@ export const guessWord = (guessedWord: string): ThunkAction<void, RootState, nul
     //dispatch to reducer, which will add guessed word to redux state
     dispatch(guessWord);
 
-    //turn success state to true if guessed word is correct
-    if (guessedWord === secretWord[0]) {
+    //turn success state to true if guessed word is correct (secretWord[0])
+    if (guessedWord === secretWord) {
         const correctGuess: appActionTypes = {
             type: CORRECT_GUESS,
         };

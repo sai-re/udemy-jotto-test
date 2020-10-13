@@ -1,7 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function GuessedWords(props) {
+type Props = {
+    guessedWords: any[]
+};
+
+function GuessedWords(props: Props) {
     const printTable = () => {
         //if there are no guessed words print msg
         if (props.guessedWords.length === 0) {
@@ -46,16 +49,6 @@ function GuessedWords(props) {
             {printTable()}
         </div>
     );
-};
-
-//give types to our props
-GuessedWords.propTypes = {
-    guessedWords: PropTypes.arrayOf(
-        PropTypes.shape({
-            guessedWord: PropTypes.string.isRequired,
-            letterMatchCount: PropTypes.number.isRequired
-        })
-    ).isRequired
 };
 
 export default GuessedWords;

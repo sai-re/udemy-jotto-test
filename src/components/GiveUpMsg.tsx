@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NewWord from './NewWord';
 
-function GiveUpMsg(props) {    
+type Props = {
+    secretWord: string
+};
+
+function GiveUpMsg(props: Props) {    
     return (
         <div data-test="component-give-up-message">
             <div className="holder">
@@ -16,11 +19,6 @@ function GiveUpMsg(props) {
             </div>
         </div>
     );
-};
-
-//give types to our props
-GiveUpMsg.propTypes = {
-    secretWord: PropTypes.array,
 };
 
 export default GiveUpMsg;

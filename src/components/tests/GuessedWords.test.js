@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import GuessedWords from '../GuessedWords';
 
-import { findByTestAttr, checkProps } from '../../../test/util';
+import { findByTestAttr } from '../../../test/util';
 
 /**
 * setup function to create shallow wrapper
@@ -16,9 +16,9 @@ const setup = (props={}) => {
     return shallow(<GuessedWords {...setUpProps} />);
 };
 
-it('props are correct type on congrats component', () => {
-    checkProps(GuessedWords, defaultProps)
-});
+// it('props are correct type on congrats component', () => {
+//     checkProps(GuessedWords, defaultProps)
+// });
 
 describe("if there are no words guessed", () => {
     let wrapper; //give wrapper to global scope of describe

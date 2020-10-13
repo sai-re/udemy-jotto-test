@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 
 import { givenUp } from "../redux/actions/index";
 
-export class GiveUpBtn extends Component {
-    constructor() {
-        super();
+type Props = {
+    givenUp: () => void,
+    giveUp: boolean
+};
+
+export class GiveUpBtn extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
         this.handleClick = this.handleClick.bind(this);
     };
 

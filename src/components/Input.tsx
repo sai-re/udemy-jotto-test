@@ -3,14 +3,30 @@ import { connect } from 'react-redux';
 
 import { guessWord } from "../redux/actions/index";
 
-export class Input extends Component {
-    constructor() {
-        super();
+type DispatchProp = {
+    guessWord: (guessedWord: string) => void
+};
+
+type LinkStateProps = {
+    success: boolean,
+    giveUp: boolean
+};
+
+type State = {
+    guess: string
+};
+
+type Props = DispatchProp & LinkStateProps;
+
+export class Input extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+
         this.state = { guess: "" };
         this.handleClick = this.handleClick.bind(this);
     };
 
-    handleClick(e) {
+    handleClick(e: React.MouseEvent) {
         e.preventDefault();
 
         const guess = this.state.guess;
@@ -58,8 +74,9 @@ export class Input extends Component {
     };
 };
 
-const mapStateToProps = ({ success, giveUp }) => {
-    return { success, giveUp }
-};
+const mapStateToProps = (state: LinkStateProps): LinkStateProps => ({
+    success: state.success, 
+    giveUp: state.giveUp 
+});
 
 export default connect(mapStateToProps, { guessWord })(Input);

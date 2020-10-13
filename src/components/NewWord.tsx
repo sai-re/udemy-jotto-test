@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 
 import { getSecretWord, resetState } from "../redux/actions/index";
 
-export class NewWord extends Component {
-    constructor() {
-        super();
+type Props = {
+    getSecretWord: () => void, 
+    resetState: () => void
+};
+
+export class NewWord extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
         this.handleClick = this.handleClick.bind(this);
     };
 
