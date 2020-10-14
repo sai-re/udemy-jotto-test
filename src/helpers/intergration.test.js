@@ -3,7 +3,8 @@ import { guessWord } from '../redux/actions/index';
 
 describe('guessWord action dispatcher', () => {
     const unsuccessfulGuess = "train";
-    const secretWord = ["party"];
+    // const secretWord = ["party"];
+    const secretWord = "party";
 
     describe("no guessed words", () => {
         let store;
