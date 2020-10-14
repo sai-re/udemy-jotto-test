@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import { guessWord } from "../redux/actions/index";
 
-type DispatchProp = {
-    guessWord: (guessedWord: string) => void
-};
-
-type LinkStateProps = {
-    success: boolean,
-    giveUp: boolean
-};
-
-type State = {
-    guess: string
-};
-
-type Props = DispatchProp & LinkStateProps;
-
-export class Input extends Component<Props, State> {
-    constructor(props: Props) {
+export class Input extends Component<PropsFromRedux, OwnState> {
+    constructor(props: PropsFromRedux) {
         super(props);
 
         this.state = { guess: "" };
@@ -74,9 +59,30 @@ export class Input extends Component<Props, State> {
     };
 };
 
-const mapStateToProps = (state: LinkStateProps): LinkStateProps => ({
+//REDUX//
+const mapStateToProps = (state: MapStateProps): MapStateProps => ({
     success: state.success, 
     giveUp: state.giveUp 
 });
 
-export default connect(mapStateToProps, { guessWord })(Input);
+const mapDispatchToProps = { guessWord };
+
+//seperate connect function calls
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+//TYPES//
+//types for redux state as props
+interface MapStateProps {
+    success: boolean,
+    giveUp: boolean
+};
+
+//types for local state
+interface OwnState {
+    guess: string
+};
+
+//infer props from redux using connectedProps
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Input);

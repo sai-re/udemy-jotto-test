@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import { givenUp } from "../redux/actions/index";
-
-type Props = {
-    givenUp: () => void,
-    giveUp: boolean
-};
 
 export class GiveUpBtn extends Component<Props> {
     constructor(props: Props) {
@@ -34,4 +29,17 @@ export class GiveUpBtn extends Component<Props> {
     };
 };
 
-export default connect(null, { givenUp })(GiveUpBtn);
+//REDUX
+const mapDispatchToProps = { givenUp };
+
+const connector = connect(null, mapDispatchToProps);
+
+//TYPES//
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+//extend props from redux to include own props
+interface Props extends PropsFromRedux {
+    giveUp: boolean
+};
+
+export default connector(GiveUpBtn);

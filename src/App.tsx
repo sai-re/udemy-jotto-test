@@ -5,20 +5,12 @@ import Input from './components/Input';
 import GiveUpBtn from './components/GiveUpBtn';
 import GiveUpMsg from './components/GiveUpMsg';
 
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { getSecretWord } from "../src/redux/actions/index";
-
-import { AppState } from './types/state';
 
 import './App.css';
 
-type DispatchProp = {
-	getSecretWord: () => void
-};
-
-type Props = DispatchProp & AppState;
-
-export class App extends Component<Props> {
+export class App extends Component<PropsFromRedux> {
 	componentDidMount() {
 		this.props.getSecretWord();
 	};
@@ -48,7 +40,7 @@ export class App extends Component<Props> {
 			<div data-test="component-app" className="container">
 				<div className="row">
 					<div className="col-sm">
-						<h1>Jotto</h1>
+						<h1>Take Your Guess!</h1>
 						<p>secret word is {this.props.secretWord}</p>
 						
 						{this.printMsg()}
@@ -66,11 +58,26 @@ export class App extends Component<Props> {
 	};
 };
 
-const mapStateToProps = (state: AppState): AppState => ({
+//REDUX//
+const mapStateToProps = (state: StateProps): StateProps => ({
 	success: state.success, 
 	secretWord: state.secretWord,
 	guessedWords: state.guessedWords,
 	giveUp: state.giveUp
 });
 
-export default connect(mapStateToProps, { getSecretWord })(App);
+const mapDispatchToProps = { getSecretWord };
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+//TYPES//
+interface StateProps {
+	success: boolean,
+    guessedWords: any[],
+    secretWord: string,
+    giveUp: boolean 
+};
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(App);

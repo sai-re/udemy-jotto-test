@@ -1,10 +1,6 @@
 import React from 'react';
 import NewWord from './NewWord';
 
-type Props = {
-    secretWord: string
-};
-
 function GiveUpMsg(props: Props) {    
     return (
         <div data-test="component-give-up-message">
@@ -19,6 +15,11 @@ function GiveUpMsg(props: Props) {
             </div>
         </div>
     );
+};
+
+//TYPES//
+interface Props {
+    secretWord: string
 };
 
 export default GiveUpMsg;

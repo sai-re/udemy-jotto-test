@@ -1,9 +1,5 @@
 import React from 'react';
 
-type Props = {
-    guessedWords: any[]
-};
-
 function GuessedWords(props: Props) {
     const printTable = () => {
         //if there are no guessed words print msg
@@ -49,6 +45,11 @@ function GuessedWords(props: Props) {
             {printTable()}
         </div>
     );
+};
+
+//TYPES//
+interface Props {
+    guessedWords: any[]
 };
 
 export default GuessedWords;

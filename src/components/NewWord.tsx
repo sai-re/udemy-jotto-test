@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import { getSecretWord, resetState } from "../redux/actions/index";
 
-type Props = {
-    getSecretWord: () => void, 
-    resetState: () => void
-};
-
-export class NewWord extends Component<Props> {
-    constructor(props: Props) {
+export class NewWord extends Component<PropsFromRedux> {
+    constructor(props: PropsFromRedux) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     };
@@ -34,4 +29,12 @@ export class NewWord extends Component<Props> {
     };
 };
 
-export default connect(null, { getSecretWord, resetState })(NewWord);
+//REDUX//
+const mapDispatchToProps = { getSecretWord, resetState };
+
+const connector = connect(null, mapDispatchToProps);
+
+//TYPES//
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(NewWord);
